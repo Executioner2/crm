@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
 </head>
 <body>
-	<script type="text/javascript">
-		document.location.href = "login.html";
-	</script>
+	<%
+//		request.getRequestDispatcher("page/loginPage").forward(request, response);
+		response.sendRedirect("page/loginPage");
+	%>
 </body>
 </html>

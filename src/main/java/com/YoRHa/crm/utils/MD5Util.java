@@ -12,6 +12,8 @@ import java.security.NoSuchAlgorithmException;
  */
 public class MD5Util {
 
+    private MD5Util(){}
+
     public static String getMD5(String password) {
         try {
             // 得到一个信息摘要器

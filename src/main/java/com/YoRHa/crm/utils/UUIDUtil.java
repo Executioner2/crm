@@ -11,6 +11,8 @@ import java.util.UUID;
  */
 public class UUIDUtil {
 
+    private UUIDUtil(){}
+
     /**
      * @return 返回一个去掉 '-' 的UUID用来当作表中的id主键
      */

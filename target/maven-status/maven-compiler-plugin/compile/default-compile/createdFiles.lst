@@ -1,4 +1,12 @@
 com\YoRHa\crm\settings\domain\User.class
+com\YoRHa\crm\settings\dao\UserDao.class
+com\YoRHa\crm\exception\LoginException.class
+com\YoRHa\crm\settings\service\UserService.class
 com\YoRHa\crm\utils\UUIDUtil.class
-com\YoRHa\crm\utils\DateTimeUtil.class
+com\YoRHa\crm\settings\service\impl\UserServiceImpl.class
 com\YoRHa\crm\utils\MD5Util.class
+com\YoRHa\crm\settings\web\handler\exception\LoginExceptionHandler.class
+com\YoRHa\crm\settings\web\handler\interceptor\LoginInterceptor.class
+com\YoRHa\crm\settings\web\controller\UserController.class
+com\YoRHa\crm\sidebar\web\controller\SideBarController.class
+com\YoRHa\crm\utils\DateTimeUtil.class

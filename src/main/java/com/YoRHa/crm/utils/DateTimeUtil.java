@@ -11,7 +11,9 @@ import java.util.Date;
  * Description:  日期时间工具包，用来把系统当前日期时间格式化
  */
 public class DateTimeUtil {
-    private static String getSysDate(){
+    private DateTimeUtil(){}
+
+    public static String getSysDate(){
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(new Date());

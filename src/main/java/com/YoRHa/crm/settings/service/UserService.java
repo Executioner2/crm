@@ -1,5 +1,8 @@
 package com.YoRHa.crm.settings.service;
 
+import com.YoRHa.crm.exception.LoginException;
+import com.YoRHa.crm.settings.domain.User;
+
 /**
  * Copyright@1205878539@qq.com
  * Author:2Executioner
@@ -9,4 +12,5 @@ package com.YoRHa.crm.settings.service;
  */
 public interface UserService {
 
+    User userLogin(User user, String ip) throws LoginException;
 }

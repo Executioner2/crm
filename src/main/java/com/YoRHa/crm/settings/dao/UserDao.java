@@ -1,5 +1,7 @@
 package com.YoRHa.crm.settings.dao;
 
+import com.YoRHa.crm.settings.domain.User;
+
 /**
  * Copyright@1205878539@qq.com
  * Author:2Executioner
@@ -8,4 +10,5 @@ package com.YoRHa.crm.settings.dao;
  * Description:
  */
 public interface UserDao {
+    User queryUserByNameAndPwd(User user);
 }
