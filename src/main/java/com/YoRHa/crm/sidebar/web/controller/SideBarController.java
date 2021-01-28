@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = {"/workbench", ""})
 public class SideBarController {
 
-    @RequestMapping(value = "/main/index.do")
+    @RequestMapping(value = "/main/index")
     public String mainIndex(){
         return "workbench/main/index";
     }
 
-    @RequestMapping(value = "activity/index.do")
+    @RequestMapping(value = "activity/index")
     public String activityIndex(){
         return "workbench/activity/index";
     }

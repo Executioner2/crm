@@ -16,7 +16,9 @@
 
 	<script>
 		$(function () {
-			window.top.location = window.location;
+			if(window.top != window){
+				window.top.location = window.location;
+			}
 
 			$("#username").focus();
 

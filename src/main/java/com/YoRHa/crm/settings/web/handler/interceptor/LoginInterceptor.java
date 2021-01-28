@@ -18,12 +18,13 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession(false);
-        String path = request.getContextPath();
-        System.out.println(path);
+        String path = request.getServletPath();
         if(session == null || session.getAttribute("user") == null){
             if("/page/loginPage".equals(path)){
                 return true;
             }else if("/settings/login".equals(path)){
+                return true;
+            }else if("/crm".equals(path)){
                 return true;
             }else{
                 request.getRequestDispatcher("/page/loginPage").forward(request, response);
