@@ -11,4 +11,6 @@ import com.YoRHa.crm.settings.domain.User;
  */
 public interface UserDao {
     User queryUserByNameAndPwd(User user);
+
+    User queryUserById(String owner);
 }

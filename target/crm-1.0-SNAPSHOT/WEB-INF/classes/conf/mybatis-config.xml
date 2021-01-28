@@ -14,12 +14,14 @@
     <typeAliases>
 
         <package name="com.YoRHa.crm.settings.domain"/>
+        <package name="com.YoRHa.crm.workbench.domain"/>
 
     </typeAliases>
 
     <mappers>
 
         <package name="com.YoRHa.crm.settings.dao"/>
+        <package name="com.YoRHa.crm.workbench.dao"/>
 
     </mappers>
 </configuration>

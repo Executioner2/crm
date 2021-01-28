@@ -4,9 +4,41 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.YoRHa.crm.settings.dao.UserDao">
 
-    <select id="queryUserByNameAndPwd" resultType="user">
+    <select id="queryUserByNameAndPwd" resultType="User">
 
-        select * from tbl_user where loginAct=#{loginAct} and loginPwd=#{loginPwd}
+        select
+            id,
+            loginAct,
+            name,
+            email,
+            expireTime,
+            lockState,
+            deptno,
+            allowIps,
+            createTime,
+            createBy,
+            editTime,
+            editBy
+        from tbl_user where loginAct=#{loginAct} and loginPwd=#{loginPwd}
         
+    </select>
+
+    <select id="queryUserById" resultType="User">
+
+        select
+            id,
+            loginAct,
+            name,
+            email,
+            expireTime,
+            lockState,
+            deptno,
+            allowIps,
+            createTime,
+            createBy,
+            editTime,
+            editBy
+        from tbl_user where id = #{id}
+
     </select>
 </mapper>

@@ -8,9 +8,11 @@
 <head>
 	<base href="<%=basePath%>"/>
 	<meta charset="UTF-8">
+
 	<script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
 	<script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
 	<link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -26,7 +28,7 @@
 			$("#loginBtn").click(function () {
 
 				$.ajax({
-					url:"settings/login",
+					url:"settings/login.do",
 					data:{
 						loginAct:$.trim($("#username").val()),
 						loginPwd:$.trim($("#password").val())
@@ -34,7 +36,7 @@
 					type:"post",
 					success:function (resp) {
 						if(resp.result){
-							window.location.href = "page/workbenchPage";
+							window.location.href = "page/workbenchPage.do";
 						}else{
 							$("#msg").html(resp.msg);
 						}

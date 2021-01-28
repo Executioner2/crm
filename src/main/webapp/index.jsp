@@ -6,8 +6,7 @@
 </head>
 <body>
 	<%
-//		request.getRequestDispatcher("page/loginPage").forward(request, response);
-		response.sendRedirect("page/loginPage");
+		request.getRequestDispatcher("page/loginPage.do").forward(request, response);
 	%>
 </body>
 </html>

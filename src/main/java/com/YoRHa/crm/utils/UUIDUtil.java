@@ -16,7 +16,7 @@ public class UUIDUtil {
     /**
      * @return 返回一个去掉 '-' 的UUID用来当作表中的id主键
      */
-    private static String getUUID(){
+    public static String getUUID(){
 
         return UUID.randomUUID().toString().replaceAll("-","");
     }

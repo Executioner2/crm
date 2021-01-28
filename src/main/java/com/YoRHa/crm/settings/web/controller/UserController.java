@@ -6,8 +6,8 @@ import com.YoRHa.crm.settings.service.UserService;
 import com.YoRHa.crm.utils.MD5Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -26,15 +26,13 @@ import java.util.Map;
 public class UserController {
     @Resource
     private UserService userService;
-    @Resource
-    private ModelAndView mv;
 
-    @RequestMapping(value = "/page/loginPage")
+    @RequestMapping(value = "/page/loginPage.do")
     public String userLoginPage(){
         return "login";
     }
 
-    @RequestMapping(value = "/settings/login")
+    @RequestMapping(value = "/settings/login.do", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> userLogin(User user, HttpServletRequest request) throws LoginException {
         Map<String, Object> map = new HashMap<>();
@@ -49,7 +47,7 @@ public class UserController {
         return map;
     }
 
-    @RequestMapping(value = "/page/workbenchPage")
+    @RequestMapping(value = "/page/workbenchPage.do")
     public String gotoWorkspacePage(){
         return "workbench/index";
     }
