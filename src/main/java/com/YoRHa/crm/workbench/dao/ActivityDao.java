@@ -16,4 +16,6 @@ public interface ActivityDao {
     List<User> listUser();
 
     Integer activityAdd(Activity activity);
+
+    List<Activity> searchActivityList(Activity activity);
 }

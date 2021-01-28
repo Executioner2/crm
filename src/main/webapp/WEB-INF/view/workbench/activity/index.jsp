@@ -12,11 +12,19 @@
 	<script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
 	<script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/locale/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script type="text/javascript" src="jquery/bs_pagination/jquery.bs_pagination.min.js"></script>
+	<script type="text/javascript" src="jquery/bs_pagination/en.js"></script>
 	<link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 	<link href="jquery/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="jquery/bs_pagination/jquery.bs_pagination.min.css">
+
+
 
 	<script type="text/javascript">
 		$(function(){
+
+			activityList(1, 2);
+
 			$(".time").datetimepicker({
 				minView: "month",
 				language:  'zh-CN',
@@ -26,14 +34,11 @@
 				pickerPosition: "bottom-left"
 			});
 
-
+			//打开模态框
 			$("#activityAddBtn").click(function () {
-				$("#create-activityForm")[0].reset();
-
 				//查询用户
 				$.ajax({
 					url:"activity/listUser.do",
-					data:{},
 					type:"get",
 					success:function (resp) {
 						var html = "<option></option>";
@@ -48,6 +53,8 @@
 				$("#createActivityModal").modal().show();
 			});
 
+
+			//保存活动
 			$("#createBtn").click(function () {
 				$.ajax({
 					url:"activity/add.do",
@@ -62,11 +69,93 @@
 					type:"post",
 					success:function (resp) {
 						//刷新当前显示记录
+						if(resp){
+							$("#create-activityForm")[0].reset();
+							activityList(1 ,$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
+						}else{
+							alert("市场活动添加失败");
+						}
 					}
 				});
 			});
 
+			//查询
+			$("#searchBtn").click(function () {
+				$("#hidden-name").val($("#search-name").val());
+				$("#hidden-owner").val($("#search-owner").val());
+				$("#hidden-startTime").val($("#search-startTime").val());
+				$("#hidden-endTime").val($("#search-endTime").val());
+
+				activityList(1 ,$("#activityPage").bs_pagination('getOption', 'rowsPerPage'));
+			});
+
+			//全选
+			$("#qx").click(function () {
+				$("input[name=xz]").prop("checked", this.checked);
+			});
+
+			//选择
+			$("#activityListTable").on("click", $("input[name=xz]"), function () {
+				$("#qx").prop("checked", $("input[name=xz]").length == $("input[name=xz]:checked").length);
+			});
+
 		});
+
+		//活动list
+		function activityList(pageNo, pageSize) {
+
+			$("#qx").prop("checked", false);
+
+			$("#search-name").val($("#hidden-name").val());
+			$("#search-owner").val($("#hidden-owner").val());
+			$("#search-startTime").val($("#hidden-startTime").val());
+			$("#search-endTime").val($("#hidden-endTime").val());
+
+
+			$.ajax({
+				url:"activity/list.do",
+				data:{
+					name:$.trim($("#search-name").val()),
+					owner:$.trim($("#search-owner").val()),
+					startDate:$("#search-startTime").val(),
+					endDate:$("#search-endTime").val(),
+					pageNo:pageNo,
+					pageSize:pageSize
+				},
+				type:"get",
+				success:function (resp) {
+					var html = "";
+					$.each(resp.activities, function (index, item) {
+						html += '<tr class="active">';
+						html += '<td><input type="checkbox" name="xz" value='+item.id+'/></td>';
+						html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'detail.html\';">'+item.name+'</a></td>';
+						html += '<td>'+item.owner+'</td>';
+						html += '<td>'+item.startDate+'</td>';
+						html += '<td>'+item.endDate+'</td></tr>';
+					});
+					$("#activityListTable tbody").html(html);
+
+					$("#activityPage").bs_pagination({
+						currentPage: pageNo, // 页码
+						rowsPerPage: pageSize, // 每页显示的记录条数
+						maxRowsPerPage: 20, // 每页最多显示的记录条数
+						totalPages: resp.pages, // 总页数
+						totalRows: resp.total, // 总记录条数
+
+						visiblePageLinks: 3, // 显示几个卡片
+
+						showGoToPage: true,
+						showRowsPerPage: true,
+						showRowsInfo: true,
+						showRowsDefaultInfo: true,
+
+						onChangePage : function(event, data){
+							activityList(data.currentPage , data.rowsPerPage);
+						}
+					});
+				}
+			});
+		}
 
 	</script>
 </head>
@@ -197,10 +286,13 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	
+
+
+	<input type="hidden" id="hidden-name">
+	<input type="hidden" id="hidden-owner">
+	<input type="hidden" id="hidden-startTime">
+	<input type="hidden" id="hidden-endTime">
+
 	<div>
 		<div style="position: relative; left: 10px; top: -10px;">
 			<div class="page-header">
@@ -217,14 +309,14 @@
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">名称</div>
-				      <input class="form-control" type="text">
+				      <input class="form-control" type="text" id="search-name">
 				    </div>
 				  </div>
 				  
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">所有者</div>
-				      <input class="form-control" type="text">
+				      <input class="form-control" type="text" id="search-owner">
 				    </div>
 				  </div>
 
@@ -232,17 +324,17 @@
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">开始日期</div>
-					  <input class="form-control" type="text" id="startTime" />
+					  <input class="form-control time" type="text" id="search-startTime" readonly/>
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <div class="input-group">
 				      <div class="input-group-addon">结束日期</div>
-					  <input class="form-control" type="text" id="endTime">
+					  <input class="form-control time" type="text" id="search-endTime" readonly/>
 				    </div>
 				  </div>
 				  
-				  <button type="submit" class="btn btn-default">查询</button>
+				  <button type="button" id="searchBtn" class="btn btn-default">查询</button>
 				  
 				</form>
 			</div>
@@ -255,10 +347,10 @@
 				
 			</div>
 			<div style="position: relative;top: 10px;">
-				<table class="table table-hover">
+				<table class="table table-hover" id="activityListTable">
 					<thead>
 						<tr style="color: #B3B3B3;">
-							<td><input type="checkbox" /></td>
+							<td><input type="checkbox" id="qx" /></td>
 							<td>名称</td>
                             <td>所有者</td>
 							<td>开始日期</td>
@@ -266,57 +358,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="active">
-							<td><input type="checkbox" /></td>
-							<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='detail.html';">发传单</a></td>
-                            <td>zhangsan</td>
-							<td>2020-10-10</td>
-							<td>2020-10-20</td>
-						</tr>
-                        <tr class="active">
-                            <td><input type="checkbox" /></td>
-                            <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='detail.html';">发传单</a></td>
-                            <td>zhangsan</td>
-                            <td>2020-10-10</td>
-                            <td>2020-10-20</td>
-                        </tr>
+
 					</tbody>
 				</table>
 			</div>
-			
+
+			<%--分页框--%>
 			<div style="height: 50px; position: relative;top: 30px;">
-				<div>
-					<button type="button" class="btn btn-default" style="cursor: default;">共<b>50</b>条记录</button>
-				</div>
-				<div class="btn-group" style="position: relative;top: -34px; left: 110px;">
-					<button type="button" class="btn btn-default" style="cursor: default;">显示</button>
-					<div class="btn-group">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							10
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">20</a></li>
-							<li><a href="#">30</a></li>
-						</ul>
-					</div>
-					<button type="button" class="btn btn-default" style="cursor: default;">条/页</button>
-				</div>
-				<div style="position: relative;top: -88px; left: 285px;">
-					<nav>
-						<ul class="pagination">
-							<li class="disabled"><a href="#">首页</a></li>
-							<li class="disabled"><a href="#">上一页</a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">下一页</a></li>
-							<li class="disabled"><a href="#">末页</a></li>
-						</ul>
-					</nav>
-				</div>
+
+				<div id="activityPage"></div>
+
 			</div>
 			
 		</div>

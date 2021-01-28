@@ -5,6 +5,7 @@ E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\web\handler\exceptio
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\sidebar\web\controller\SideBarController.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\utils\UUIDUtil.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\web\handler\interceptor\LoginInterceptor.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\web\handler\aspect\PageAspectHandler.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\domain\User.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\dao\UserDao.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\dao\ActivityRemarkDao.java

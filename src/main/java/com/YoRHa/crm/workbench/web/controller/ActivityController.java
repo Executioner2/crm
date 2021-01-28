@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Copyright@1205878539@qq.com
@@ -36,5 +37,12 @@ public class ActivityController {
     public Boolean activityAdd(Activity activity){
 
         return activityService.activityAdd(activity);
+    }
+
+    @RequestMapping(value = "/list.do")
+    @ResponseBody
+    public Map<String, Object> activityList(Activity activity, Integer pageNo, Integer pageSize){
+
+        return activityService.searchActivityList(pageNo, pageSize, activity);
     }
 }

@@ -12,6 +12,7 @@ com\YoRHa\crm\utils\DateTimeUtil.class
 com\YoRHa\crm\workbench\service\impl\ActivityServiceImpl.class
 com\YoRHa\crm\workbench\domain\Activity.class
 com\YoRHa\crm\settings\domain\User.class
+com\YoRHa\crm\workbench\web\handler\aspect\PageAspectHandler.class
 com\YoRHa\crm\settings\service\UserService.class
 com\YoRHa\crm\utils\UUIDUtil.class
 com\YoRHa\crm\settings\service\impl\UserServiceImpl.class

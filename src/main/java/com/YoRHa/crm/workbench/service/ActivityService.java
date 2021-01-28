@@ -4,6 +4,7 @@ import com.YoRHa.crm.settings.domain.User;
 import com.YoRHa.crm.workbench.domain.Activity;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Copyright@1205878539@qq.com
@@ -16,4 +17,6 @@ public interface ActivityService {
     List<User> listUser();
 
     Boolean activityAdd(Activity activity);
+
+    Map<String, Object> searchActivityList(Integer pageNo, Integer pageSize, Activity activity);
 }

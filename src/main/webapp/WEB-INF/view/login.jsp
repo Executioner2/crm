@@ -22,30 +22,35 @@
 				window.top.location = window.location;
 			}
 
+			$(window).keyup(function (key) {
+				if(key.keyCode == 13){
+					loginRequest();
+				}
+			})
+
 			$("#username").focus();
 
 			/*用户登录*/
-			$("#loginBtn").click(function () {
-
-				$.ajax({
-					url:"settings/login.do",
-					data:{
-						loginAct:$.trim($("#username").val()),
-						loginPwd:$.trim($("#password").val())
-					},
-					type:"post",
-					success:function (resp) {
-						if(resp.result){
-							window.location.href = "page/workbenchPage.do";
-						}else{
-							$("#msg").html(resp.msg);
-						}
-					}
-				});
-			});
-
-
+			$("#loginBtn").click(loginRequest);
 		})
+
+		function loginRequest() {
+			$.ajax({
+				url:"settings/login.do",
+				data:{
+					loginAct:$.trim($("#username").val()),
+					loginPwd:$.trim($("#password").val())
+				},
+				type:"post",
+				success:function (resp) {
+					if(resp.result){
+						window.location.href = "page/workbenchPage.do";
+					}else{
+						$("#msg").html(resp.msg);
+					}
+				}
+			});
+		}
 
 	</script>
 

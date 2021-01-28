@@ -7,11 +7,15 @@ import com.YoRHa.crm.utils.UUIDUtil;
 import com.YoRHa.crm.workbench.dao.ActivityDao;
 import com.YoRHa.crm.workbench.domain.Activity;
 import com.YoRHa.crm.workbench.service.ActivityService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Copyright@1205878539@qq.com
@@ -46,5 +50,15 @@ public class ActivityServiceImpl implements ActivityService {
         flag = activityDao.activityAdd(activity) == 1 ? true : false;
 
         return flag;
+    }
+
+    @Override
+    public Map<String, Object> searchActivityList(Integer pageNo, Integer pageSize, Activity activity) {
+        Map<String, Object> map = new HashMap<>();
+
+        List<Activity> activities = activityDao.searchActivityList(activity);
+
+        map.put("activities", activities);
+        return map;
     }
 }

@@ -30,4 +30,30 @@
             #{createBy}
         )
     </insert>
+
+    <select id="searchActivityList" resultType="Activity">
+
+        select
+            a.id,
+            u.name owner,
+            a.name,
+            startDate,
+            endDate
+        from tbl_activity a join tbl_user u on a.owner = u.id
+        <where>
+            <if test="owner != null and owner != ''">
+                u.name like "%" #{owner} "%"
+            </if>
+            <if test="name != null and name != ''">
+                and a.name like "%" #{name} "%"
+            </if>
+            <if test="startDate != null and startDate != ''">
+                and a.startDate &gt;= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != ''">
+                and a.endDate &lt;= #{endDate}
+            </if>
+        </where>
+        order by a.createTime desc
+    </select>
 </mapper>
