@@ -1,0 +1,4 @@
+com\YoRHa\crm\settings\domain\User.class
+com\YoRHa\crm\utils\UUIDUtil.class
+com\YoRHa\crm\utils\DateTimeUtil.class
+com\YoRHa\crm\utils\MD5Util.class
