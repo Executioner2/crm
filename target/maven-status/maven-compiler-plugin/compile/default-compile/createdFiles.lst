@@ -2,6 +2,7 @@ com\YoRHa\crm\settings\dao\UserDao.class
 com\YoRHa\crm\workbench\web\controller\ActivityController.class
 com\YoRHa\crm\exception\LoginException.class
 com\YoRHa\crm\workbench\service\ActivityService.class
+com\YoRHa\crm\workbench\service\impl\ActivityRemarkServiceImpl.class
 com\YoRHa\crm\exception\SqlDataDeleteException.class
 com\YoRHa\crm\workbench\domain\ActivityRemark.class
 com\YoRHa\crm\workbench\dao\ActivityDao.class
@@ -20,3 +21,5 @@ com\YoRHa\crm\utils\UUIDUtil.class
 com\YoRHa\crm\settings\service\impl\UserServiceImpl.class
 com\YoRHa\crm\utils\MD5Util.class
 com\YoRHa\crm\settings\web\handler\exception\LoginExceptionHandler.class
+com\YoRHa\crm\workbench\web\controller\ActivityRemarkController.class
+com\YoRHa\crm\workbench\service\ActivityRemarkService.class

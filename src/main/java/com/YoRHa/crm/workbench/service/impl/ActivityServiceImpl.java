@@ -111,11 +111,19 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    @Transactional
     public Boolean updateActivity(Activity activity) {
         Boolean flag = false;
 
         flag = activityDao.updateActivity(activity) == 1 ? true : false;
 
         return flag;
+    }
+
+    @Override
+    public Activity queryActivityOnRemarkPage(Activity activity) {
+
+
+        return activityDao.queryActivity(activity);
     }
 }

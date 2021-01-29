@@ -26,4 +26,6 @@ public interface ActivityService {
     Map<String, Object> queryActivityById(Activity activity);
 
     Boolean updateActivity(Activity activity);
+
+    Activity queryActivityOnRemarkPage(Activity activity);
 }

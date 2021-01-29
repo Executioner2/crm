@@ -1,5 +1,10 @@
 package com.YoRHa.crm.workbench.dao;
 
+import com.YoRHa.crm.workbench.domain.Activity;
+import com.YoRHa.crm.workbench.domain.ActivityRemark;
+
+import java.util.List;
+
 /**
  * Copyright@1205878539@qq.com
  * Author:2Executioner
@@ -11,4 +16,10 @@ public interface ActivityRemarkDao {
     Integer countActivityRemarkByDelete(String[] id);
 
     Integer deleteActivityRemarkByActivityId(String[] id);
+
+    List<ActivityRemark> listActivityRemark(ActivityRemark activityRemark);
+
+    Integer addActivityRemark(ActivityRemark activityRemark);
+
+    Integer deleteActivityRemarkById(String id);
 }

@@ -48,7 +48,7 @@
 						$("#create-marketActivityOwner").html(html);
 						$("#create-marketActivityOwner option[value=${user.id}]").prop("selected",true);
 
-						$("#createActivityModal").modal().show();
+						$("#createActivityModal").modal("show");
 					}
 				});
 			});
@@ -165,7 +165,7 @@
 						$("#edit-cost").val(resp.activity.cost);
 						$("#edit-describe").val(resp.activity.description);
 
-						$("#editActivityModal").modal().show();
+						$("#editActivityModal").modal("show");
 					}
 				});
 			});
@@ -228,7 +228,7 @@
 					$.each(resp.activities, function (index, item) {
 						html += '<tr class="active">';
 						html += '<td><input type="checkbox" name="xz" value='+item.id+'></td>';
-						html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'detail.html\';">'+item.name+'</a></td>';
+						html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'activityRemark/show.do?id='+item.id+'\';">'+item.name+'</a></td>';
 						html += '<td>'+item.owner+'</td>';
 						html += '<td>'+item.startDate+'</td>';
 						html += '<td>'+item.endDate+'</td></tr>';
