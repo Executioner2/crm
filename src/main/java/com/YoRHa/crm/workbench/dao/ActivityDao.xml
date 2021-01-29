@@ -32,7 +32,6 @@
     </insert>
 
     <select id="searchActivityList" resultType="Activity">
-
         select
             a.id,
             u.name owner,
@@ -56,4 +55,53 @@
         </where>
         order by a.createTime desc
     </select>
+
+    <select id="countActivityRemarkByDelete" resultType="int">
+        select count(*) from tbl_activity a
+        join tbl_activity_remark ar on ar.activityId = a.id
+        where ar.activityId in
+        <foreach collection="array" separator="," open="(" close=")" item="activityId">
+            #{activityId}
+        </foreach>
+    </select>
+
+    <delete id="deleteActivityRemarkByActivityId">
+        delete from tbl_activity_remark where activityId in
+        <foreach collection="array" separator="," open="(" close=")" item="activityId">
+            #{activityId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteActivityById">
+        delete from tbl_activity where id in
+        <foreach collection="array" separator="," open="(" close=")" item="id">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="queryActivityById" resultType="activity" parameterType="activity">
+        select
+            id,
+            owner,
+            name,
+            startDate,
+            endDate,
+            cost,
+            description
+        from tbl_activity
+        where id = #{id}
+    </select>
+
+    <update id="updateActivity" parameterType="activity">
+        update tbl_activity set
+            owner = #{owner},
+            name = #{name},
+            startDate = #{startDate},
+            endDate = #{endDate},
+            cost = #{cost},
+            description = #{description},
+            editTime = #{editTime},
+            editBy = #{editBy}
+        where id = #{id}
+    </update>
 </mapper>

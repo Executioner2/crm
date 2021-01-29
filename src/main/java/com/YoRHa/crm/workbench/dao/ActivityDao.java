@@ -18,4 +18,14 @@ public interface ActivityDao {
     Integer activityAdd(Activity activity);
 
     List<Activity> searchActivityList(Activity activity);
+
+    Integer countActivityRemarkByDelete(String[] id);
+
+    Integer deleteActivityRemarkByActivityId(String[] id);
+
+    Integer deleteActivityById(String[] id);
+
+    Activity queryActivityById(Activity activity);
+
+    Integer updateActivity(Activity activity);
 }

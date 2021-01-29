@@ -1,5 +1,6 @@
 package com.YoRHa.crm.workbench.service;
 
+import com.YoRHa.crm.exception.SqlDataDeleteException;
 import com.YoRHa.crm.settings.domain.User;
 import com.YoRHa.crm.workbench.domain.Activity;
 
@@ -19,4 +20,10 @@ public interface ActivityService {
     Boolean activityAdd(Activity activity);
 
     Map<String, Object> searchActivityList(Integer pageNo, Integer pageSize, Activity activity);
+
+    Boolean activityDeleteById(String[] id) throws SqlDataDeleteException;
+
+    Map<String, Object> queryActivityById(Activity activity);
+
+    Boolean updateActivity(Activity activity);
 }

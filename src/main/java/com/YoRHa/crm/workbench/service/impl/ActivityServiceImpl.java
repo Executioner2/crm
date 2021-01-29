@@ -1,5 +1,6 @@
 package com.YoRHa.crm.workbench.service.impl;
 
+import com.YoRHa.crm.exception.SqlDataDeleteException;
 import com.YoRHa.crm.settings.dao.UserDao;
 import com.YoRHa.crm.settings.domain.User;
 import com.YoRHa.crm.utils.DateTimeUtil;
@@ -60,5 +61,58 @@ public class ActivityServiceImpl implements ActivityService {
 
         map.put("activities", activities);
         return map;
+    }
+
+    @Override
+    @Transactional
+    public Boolean activityDeleteById(String[] id) throws SqlDataDeleteException {
+        Boolean flag = false;
+
+        //统计要删除的activityRemark数量
+        Integer count = activityDao.countActivityRemarkByDelete(id);
+        //删除activityRemark
+        Integer deleteCount = activityDao.deleteActivityRemarkByActivityId(id);
+
+        //删除条数和要删除的条数相等就开始删除市场活动
+        if(count == deleteCount){
+
+            deleteCount = activityDao.deleteActivityById(id);
+
+            if(deleteCount == id.length){
+
+                flag = true;
+
+            }else{
+                throw new SqlDataDeleteException("删除失败，数据删除条数与期望删除条数不符");
+            }
+
+        //否则抛出异常
+        }else{
+            throw new SqlDataDeleteException("删除失败，数据删除条数与期望删除条数不符");
+        }
+
+        return flag;
+    }
+
+    @Override
+    public Map<String, Object> queryActivityById(Activity activity) {
+        Map<String, Object> map = new HashMap<>();
+
+        List<User> users = activityDao.listUser();
+        activity = activityDao.queryActivityById(activity);
+
+        map.put("users", users);
+        map.put("activity", activity);
+
+        return map;
+    }
+
+    @Override
+    public Boolean updateActivity(Activity activity) {
+        Boolean flag = false;
+
+        flag = activityDao.updateActivity(activity) == 1 ? true : false;
+
+        return flag;
     }
 }
