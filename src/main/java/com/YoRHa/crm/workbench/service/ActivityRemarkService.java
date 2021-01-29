@@ -19,4 +19,8 @@ public interface ActivityRemarkService {
     Map<String, Object> addActivityRemark(ActivityRemark activityRemark);
 
     Boolean deleteActivityRemark(String id);
+
+    String queryActivityNoteContent(String id);
+
+    Map<String, Object> updateActivityRemark(ActivityRemark activityRemark);
 }

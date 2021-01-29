@@ -77,10 +77,10 @@
 						html += '<div id="'+resp.remark.id+'" class="remarkDiv" style="height: 60px;">';
 						html += '<img src="image/user-thumbnail.png" style="width: 30px; height:30px;">';
 						html += '<div style="position: relative; top: -40px; left: 40px;" >';
-						html += '<h5>'+resp.remark.noteContent+'</h5>';
-						html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${activity.name}</b> <small style="color: gray;"> '+resp.remark.createTime+' 由'+resp.remark.createBy+'</small>';
+						html += '<h5 id="h'+resp.remark.id+'">'+resp.remark.noteContent+'</h5>';
+						html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${activity.name}</b> <small id="s'+resp.remark.id+'" style="color: gray;"> '+resp.remark.createTime+' 由'+resp.remark.createBy+'</small>';
 						html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">';
-						html += '<a class="myHref" href="javascript:void(0);"><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: cornflowerblue;"></span></a>';
+						html += '<a class="myHref" onclick="showEditRemarkDiv(\''+resp.remark.id+'\')" href="javascript:void(0);"><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: cornflowerblue;"></span></a>';
 						html += '&nbsp;&nbsp;&nbsp;&nbsp;';
 						html += '<a class="myHref" onclick="deleteRemark(\''+resp.remark.id+'\')" href="javascript:void(0);"><span class="glyphicon glyphicon-remove" style="font-size: 20px; color: red;"></span></a>';
 						html += '</div>';
@@ -96,6 +96,30 @@
 				}
 			});
 		})
+
+		//市场活动留言更新
+		$("#updateRemarkBtn").click(function () {
+			var id = $("#edit-remarkForm input:hidden").val();
+
+			$.ajax({
+				url:"activityRemark/update.do",
+				data:{
+					id:id,
+					noteContent:$.trim($("#noteContent").val())
+				},
+				type:"post",
+				success:function (resp) {
+					if(resp.result){
+						$("#h"+id).html(resp.remark.noteContent);
+						$("#s"+id).html( resp.remark.editTime+" 由"+resp.remark.editBy);
+						$("#editRemarkModal").modal("hide");
+					}else{
+						alert("更新失败！");
+					}
+				}
+			});
+
+		});
 
 	});
 
@@ -117,6 +141,21 @@
 		}
 	}
 
+	//打开修改市场活动留言的模态框
+	function showEditRemarkDiv(id) {
+
+		$.ajax({
+			url:"activityRemark/query.do",
+			data:{id:id},
+			type:"get",
+			success:function (resp) {
+				$("#noteContent").val(resp);
+				$("#edit-remarkForm input:hidden").val(id);
+				$("#editRemarkModal").modal("show");
+			}
+		});
+	}
+
 
 	//显示市场活动留言
 	function listActivityRemark() {
@@ -131,10 +170,10 @@
 					html += '<div id="'+item.id+'" class="remarkDiv" style="height: 60px;">';
 					html += '<img src="image/user-thumbnail.png" style="width: 30px; height:30px;">';
 					html += '<div style="position: relative; top: -40px; left: 40px;" >';
-					html += '<h5>'+item.noteContent+'</h5>';
-					html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${activity.name}</b> <small style="color: gray;"> '+item.editTime+' 由'+(item.editFlag==0?item.createBy:item.editBy)+'</small>';
+					html += '<h5 id="h'+item.id+'">'+item.noteContent+'</h5>';
+					html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${activity.name}</b> <small id="s'+item.id+'" style="color: gray;"> '+item.editTime+' 由'+(item.editFlag==0?item.createBy:item.editBy)+'</small>';
 					html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">';
-					html += '<a class="myHref" href="javascript:void(0);"><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: cornflowerblue;"></span></a>';
+					html += '<a class="myHref" onclick="showEditRemarkDiv(\''+item.id+'\')" href="javascript:void(0);"><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: cornflowerblue;"></span></a>';
 					html += '&nbsp;&nbsp;&nbsp;&nbsp;';
 					html += '<a class="myHref" onclick="deleteRemark(\''+item.id+'\')" href="javascript:void(0);"><span class="glyphicon glyphicon-remove" style="font-size: 20px; color: red;"></span></a>';
 					html += '</div>';
@@ -165,7 +204,8 @@
                     <h4 class="modal-title" id="myModalLabel">修改备注</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" id="edit-remarkForm">
+						<input type="hidden">
                         <div class="form-group">
                             <label for="edit-describe" class="col-sm-2 control-label">内容</label>
                             <div class="col-sm-10" style="width: 81%;">

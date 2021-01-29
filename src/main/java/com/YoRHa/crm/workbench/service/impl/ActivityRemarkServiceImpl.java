@@ -52,4 +52,23 @@ public class ActivityRemarkServiceImpl implements ActivityRemarkService {
 
         return flag;
     }
+
+    @Override
+    public String queryActivityNoteContent(String id) {
+
+        return activityRemarkDao.queryActivityNoteContent(id);
+    }
+
+    @Override
+    public Map<String, Object> updateActivityRemark(ActivityRemark activityRemark) {
+        Map<String, Object> map = new HashMap<>();
+        Boolean flag = false;
+
+        flag = activityRemarkDao.updateActivityRemark(activityRemark) == 1 ? true : false;
+
+        map.put("result", flag);
+        map.put("remark", activityRemark);
+
+        return map;
+    }
 }

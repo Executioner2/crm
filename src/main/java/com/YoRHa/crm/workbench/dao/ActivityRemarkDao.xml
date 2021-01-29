@@ -58,4 +58,17 @@
         delete from tbl_activity_remark where id = #{id}
     </delete>
 
+    <select id="queryActivityNoteContent" resultType="String">
+        select noteContent from tbl_activity_remark where id = #{id}
+    </select>
+
+    <update id="updateActivityRemark" parameterType="ActivityRemark">
+        update tbl_activity_remark set
+            noteContent = #{noteContent},
+            editTime = #{editTime},
+            editBy = #{editBy},
+            editFlag = #{editFlag}
+        where id = #{id}
+    </update>
+
 </mapper>

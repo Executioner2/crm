@@ -22,4 +22,8 @@ public interface ActivityRemarkDao {
     Integer addActivityRemark(ActivityRemark activityRemark);
 
     Integer deleteActivityRemarkById(String id);
+
+    String queryActivityNoteContent(String id);
+
+    Integer updateActivityRemark(ActivityRemark activityRemark);
 }

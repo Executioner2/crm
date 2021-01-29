@@ -158,7 +158,7 @@
 						})
 						$("#edit-marketActivityOwner").html(html);
 						$("#edit-marketActivityOwner option[value="+resp.activity.owner+"]").prop("selected", true);
-						$("#edit-activityForm").append("<input type='hidden' id='edit-id' value='"+resp.activity.id+"'>");
+						$("#edit-id").val(resp.activity.id);
 						$("#edit-marketActivityName").val(resp.activity.name);
 						$("#edit-startTime").val(resp.activity.startDate);
 						$("#edit-endTime").val(resp.activity.endDate);
@@ -335,7 +335,7 @@
 				<div class="modal-body">
 				
 					<form class="form-horizontal" role="form" id="edit-activityForm">
-					
+						<input type="hidden" id="edit-id">
 						<div class="form-group">
 							<label for="edit-marketActivityOwner" class="col-sm-2 control-label">所有者<span style="font-size: 15px; color: red;">*</span></label>
 							<div class="col-sm-10" style="width: 300px;">

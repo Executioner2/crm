@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -66,11 +67,31 @@ public class ActivityRemarkController {
         return activityRemarkService.addActivityRemark(activityRemark);
     }
 
-    @RequestMapping(value = "delete.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete.do", method = RequestMethod.POST)
     @ResponseBody
     public Boolean deleteActivityRemark(String id){
 
         return activityRemarkService.deleteActivityRemark(id);
     }
+
+    @RequestMapping(value = "/query.do")
+    @ResponseBody
+    public String queryActivityNoteContent(String id){
+
+        return activityRemarkService.queryActivityNoteContent(id);
+    }
+
+    @RequestMapping(value = "/update.do")
+    @ResponseBody
+    public Map<String, Object> updateActivityRemark(ActivityRemark activityRemark, HttpServletRequest request){
+        String editBy = ((User)request.getSession(false).getAttribute("user")).getName();
+
+        activityRemark.setEditFlag("1");
+        activityRemark.setEditBy(editBy);
+        activityRemark.setEditTime(DateTimeUtil.getSysDate());
+
+        return activityRemarkService.updateActivityRemark(activityRemark);
+    }
+
 
 }
