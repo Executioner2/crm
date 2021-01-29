@@ -6,6 +6,7 @@ import com.YoRHa.crm.settings.domain.User;
 import com.YoRHa.crm.utils.DateTimeUtil;
 import com.YoRHa.crm.utils.UUIDUtil;
 import com.YoRHa.crm.workbench.dao.ActivityDao;
+import com.YoRHa.crm.workbench.dao.ActivityRemarkDao;
 import com.YoRHa.crm.workbench.domain.Activity;
 import com.YoRHa.crm.workbench.service.ActivityService;
 import com.github.pagehelper.PageHelper;
@@ -29,6 +30,8 @@ import java.util.Map;
 public class ActivityServiceImpl implements ActivityService {
     @Resource
     private ActivityDao activityDao;
+    @Resource
+    private ActivityRemarkDao activityRemarkDao;
     @Resource
     private UserDao userDao;
 
@@ -69,9 +72,9 @@ public class ActivityServiceImpl implements ActivityService {
         Boolean flag = false;
 
         //统计要删除的activityRemark数量
-        Integer count = activityDao.countActivityRemarkByDelete(id);
+        Integer count = activityRemarkDao.countActivityRemarkByDelete(id);
         //删除activityRemark
-        Integer deleteCount = activityDao.deleteActivityRemarkByActivityId(id);
+        Integer deleteCount = activityRemarkDao.deleteActivityRemarkByActivityId(id);
 
         //删除条数和要删除的条数相等就开始删除市场活动
         if(count == deleteCount){

@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.YoRHa.crm.workbench.dao.ActivityDao">
+
     <select id="listUser" resultType="User">
         select id, name from tbl_user
     </select>
@@ -56,22 +57,6 @@
         order by a.createTime desc
     </select>
 
-    <select id="countActivityRemarkByDelete" resultType="int">
-        select count(*) from tbl_activity a
-        join tbl_activity_remark ar on ar.activityId = a.id
-        where ar.activityId in
-        <foreach collection="array" separator="," open="(" close=")" item="activityId">
-            #{activityId}
-        </foreach>
-    </select>
-
-    <delete id="deleteActivityRemarkByActivityId">
-        delete from tbl_activity_remark where activityId in
-        <foreach collection="array" separator="," open="(" close=")" item="activityId">
-            #{activityId}
-        </foreach>
-    </delete>
-
     <delete id="deleteActivityById">
         delete from tbl_activity where id in
         <foreach collection="array" separator="," open="(" close=")" item="id">
@@ -104,4 +89,5 @@
             editBy = #{editBy}
         where id = #{id}
     </update>
+
 </mapper>

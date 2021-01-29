@@ -8,4 +8,7 @@ package com.YoRHa.crm.workbench.dao;
  * Description:
  */
 public interface ActivityRemarkDao {
+    Integer countActivityRemarkByDelete(String[] id);
+
+    Integer deleteActivityRemarkByActivityId(String[] id);
 }

@@ -42,6 +42,7 @@
 
     <!--异常处理驱动-->
     <context:component-scan base-package="com.YoRHa.crm.settings.web.handler.exception"/>
+    <context:component-scan base-package="com.YoRHa.crm.workbench.web.handler.exception"/>
     <mvc:annotation-driven/>
 
     <bean id="modelAndView" class="org.springframework.web.servlet.ModelAndView"/>
