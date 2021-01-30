@@ -38,7 +38,11 @@
             createBy,
             editTime,
             editBy
-        from tbl_user where id = #{id}
+        from tbl_user where id=#{id}
 
+    </select>
+
+    <select id="listUserName" resultType="User">
+        select id, name from tbl_user
     </select>
 </mapper>

@@ -40,7 +40,7 @@
         <!--登录拦截器，禁止非法访问需要登录的页面-->
         <mvc:interceptor>
             <mvc:mapping path="/*/*.do"/>
-            <bean class="com.YoRHa.crm.settings.web.handler.interceptor.LoginInterceptor" />
+            <bean class="com.YoRHa.crm.web.handler.interceptor.LoginInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

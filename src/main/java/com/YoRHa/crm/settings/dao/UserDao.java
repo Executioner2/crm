@@ -2,6 +2,8 @@ package com.YoRHa.crm.settings.dao;
 
 import com.YoRHa.crm.settings.domain.User;
 
+import java.util.List;
+
 /**
  * Copyright@1205878539@qq.com
  * Author:2Executioner
@@ -10,6 +12,8 @@ import com.YoRHa.crm.settings.domain.User;
  * Description:
  */
 public interface UserDao {
+    List<User> listUserName();
+
     User queryUserByNameAndPwd(User user);
 
     User queryUserById(String owner);

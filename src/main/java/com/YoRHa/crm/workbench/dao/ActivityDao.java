@@ -2,6 +2,7 @@ package com.YoRHa.crm.workbench.dao;
 
 import com.YoRHa.crm.settings.domain.User;
 import com.YoRHa.crm.workbench.domain.Activity;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,8 +14,6 @@ import java.util.List;
  * Description:
  */
 public interface ActivityDao {
-    List<User> listUser();
-
     Integer activityAdd(Activity activity);
 
     List<Activity> searchActivityList(Activity activity);
@@ -26,4 +25,8 @@ public interface ActivityDao {
     Integer updateActivity(Activity activity);
 
     Activity queryActivity(Activity activity);
+
+    List<Activity> listActivity(@Param("name") String name, @Param("clueId") String clueId);
+
+    List<Activity> listBundActivity(String clueId);
 }

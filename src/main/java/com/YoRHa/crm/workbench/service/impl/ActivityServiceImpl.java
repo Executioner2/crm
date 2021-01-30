@@ -36,12 +36,6 @@ public class ActivityServiceImpl implements ActivityService {
     private UserDao userDao;
 
     @Override
-    public List<User> listUser() {
-
-        return activityDao.listUser();
-    }
-
-    @Override
     @Transactional
     public Boolean activityAdd(Activity activity) {
         Boolean flag = false;
@@ -101,7 +95,7 @@ public class ActivityServiceImpl implements ActivityService {
     public Map<String, Object> queryActivityById(Activity activity) {
         Map<String, Object> map = new HashMap<>();
 
-        List<User> users = activityDao.listUser();
+        List<User> users = userDao.listUserName();
         activity = activityDao.queryActivityById(activity);
 
         map.put("users", users);

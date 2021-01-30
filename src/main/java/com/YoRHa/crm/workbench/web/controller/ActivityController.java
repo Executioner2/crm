@@ -1,7 +1,9 @@
 package com.YoRHa.crm.workbench.web.controller;
 
 import com.YoRHa.crm.exception.SqlDataDeleteException;
+import com.YoRHa.crm.settings.dao.UserDao;
 import com.YoRHa.crm.settings.domain.User;
+import com.YoRHa.crm.settings.service.UserService;
 import com.YoRHa.crm.utils.DateTimeUtil;
 import com.YoRHa.crm.workbench.domain.Activity;
 import com.YoRHa.crm.workbench.service.ActivityService;
@@ -29,12 +31,14 @@ import java.util.Map;
 public class ActivityController {
     @Resource
     private ActivityService activityService;
+    @Resource
+    private UserService userService;
 
     @RequestMapping(value = "/listUser.do")
     @ResponseBody
     public List<User> listUser(){
 
-        return activityService.listUser();
+        return userService.listUserName();
     }
 
     @RequestMapping(value = "/add.do", method = RequestMethod.POST)

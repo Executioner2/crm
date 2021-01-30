@@ -20,8 +20,13 @@ public class SideBarController {
         return "workbench/main/index";
     }
 
-    @RequestMapping(value = "activity/index.do")
+    @RequestMapping(value = "/activity/index.do")
     public String activityIndex(){
         return "workbench/activity/index";
+    }
+
+    @RequestMapping(value = "/clue/index.do")
+    public String clueIndex(){
+        return "workbench/clue/index";
     }
 }

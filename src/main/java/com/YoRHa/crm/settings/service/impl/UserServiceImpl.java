@@ -8,6 +8,7 @@ import com.YoRHa.crm.utils.DateTimeUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Copyright@1205878539@qq.com
@@ -47,5 +48,10 @@ public class UserServiceImpl implements UserService {
         }
 
         return user;
+    }
+
+    @Override
+    public List<User> listUserName() {
+        return userDao.listUserName();
     }
 }

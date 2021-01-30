@@ -15,8 +15,6 @@ import java.util.Map;
  * Description:
  */
 public interface ActivityService {
-    List<User> listUser();
-
     Boolean activityAdd(Activity activity);
 
     Map<String, Object> searchActivityList(Integer pageNo, Integer pageSize, Activity activity);

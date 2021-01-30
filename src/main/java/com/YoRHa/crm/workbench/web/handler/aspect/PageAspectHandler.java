@@ -20,10 +20,10 @@ import java.util.Map;
 @Aspect
 public class PageAspectHandler {
 
-    @Around("setSearchActivityList()")
+    @Around("setSearchActivityList() || setSearchClueList()")
     public Object pageAspect(ProceedingJoinPoint pjp) throws Throwable {
         Object[] objects = pjp.getArgs();
-        String[] strings = {"activities"};
+        String[] strings = {"activities", "clues"};
         Integer pageNum = (int)objects[0];
         pageNum = (pageNum-1)*(int)objects[1];
 
@@ -47,4 +47,7 @@ public class PageAspectHandler {
 
     @Pointcut("execution(* com.YoRHa.crm.workbench.service.impl.ActivityServiceImpl.searchActivityList(..))")
     private void setSearchActivityList(){}
+
+    @Pointcut("execution(* com.YoRHa.crm.workbench.service.impl.ClueServiceImpl.searchClueList(..))")
+    private void setSearchClueList(){}
 }
