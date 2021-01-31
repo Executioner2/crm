@@ -13,4 +13,8 @@ public interface ClueDao {
     Clue queryClueById(String id);
 
     Integer unbundActivity(String id);
+
+    Clue queryClue(String clueId);
+
+    Integer deleteClueById(String clueId);
 }

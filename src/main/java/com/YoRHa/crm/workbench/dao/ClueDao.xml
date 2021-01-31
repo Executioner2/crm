@@ -93,6 +93,35 @@
         delete from tbl_clue_activity_relation where id=#{id}
     </delete>
 
+    <select id="queryClue" resultType="Clue">
+        select
+            id,
+            fullname,
+            appellation,
+            owner,
+            company,
+            job,
+            email,
+            phone,
+            website,
+            mphone,
+            state,
+            source,
+            createBy,
+            createTime,
+            editBy,
+            editTime,
+            description,
+            contactSummary,
+            nextContactTime,
+            address
+        from tbl_clue where id=#{id}
+    </select>
+
+    <delete id="deleteClueById">
+        delete from tbl_clue where id=#{clueId}
+    </delete>
+
 </mapper>
 
 

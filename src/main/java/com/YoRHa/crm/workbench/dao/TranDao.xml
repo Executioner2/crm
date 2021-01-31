@@ -5,7 +5,44 @@
 
 <mapper namespace="com.YoRHa.crm.workbench.dao.TranDao">
 	
-  	
+  	<insert id="insertTransaction" parameterType="Tran">
+        insert into tbl_tran(
+            id,
+            owner,
+            money,
+            name,
+            expectedDate,
+            customerId,
+            stage,
+            type,
+            source,
+            activityId,
+            contactsId,
+            createBy,
+            createTime,
+            description,
+            contactSummary,
+            nextContactTime
+        )values(
+            #{id},
+            #{owner},
+            #{money},
+            #{name},
+            #{expectedDate},
+            #{customerId},
+            #{stage},
+            #{type},
+            #{source},
+            #{activityId},
+            #{contactsId},
+            #{createBy},
+            #{createTime},
+            #{description},
+            #{contactSummary},
+            #{nextContactTime}
+        )
+    </insert>
+
 </mapper>
 
 

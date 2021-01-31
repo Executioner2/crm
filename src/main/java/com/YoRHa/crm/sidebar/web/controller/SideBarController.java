@@ -29,4 +29,19 @@ public class SideBarController {
     public String clueIndex(){
         return "workbench/clue/index";
     }
+
+    @RequestMapping(value = "/customer/index.do")
+    public String customerIndex(){
+        return "workbench/customer/index";
+    }
+
+    @RequestMapping(value = "/contacts/index.do")
+    public String contactsIndex(){
+        return "workbench/contacts/index";
+    }
+
+    @RequestMapping(value = "/transaction/index.do")
+    public String transactionIndex(){
+        return "workbench/transaction/index";
+    }
 }

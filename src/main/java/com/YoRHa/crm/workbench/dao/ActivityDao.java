@@ -1,6 +1,5 @@
 package com.YoRHa.crm.workbench.dao;
 
-import com.YoRHa.crm.settings.domain.User;
 import com.YoRHa.crm.workbench.domain.Activity;
 import org.apache.ibatis.annotations.Param;
 

@@ -16,6 +16,14 @@
          #{activityId}
         )
     </insert>
+
+    <select id="getCountCaRel" resultType="int">
+        select count(*) from tbl_clue_activity_relation where clueId=#{clueId}
+    </select>
+
+    <delete id="deleteCaRel">
+        delete from tbl_clue_activity_relation where clueId=#{clueId}
+    </delete>
   	
 </mapper>
 

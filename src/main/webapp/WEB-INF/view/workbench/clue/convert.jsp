@@ -21,6 +21,15 @@
 
 <script type="text/javascript">
 	$(function(){
+		$(".time").datetimepicker({
+			minView: "month",
+			language:  'zh-CN',
+			format: 'yyyy-mm-dd',
+			autoclose: true,
+			todayBtn: true,
+			pickerPosition: "bottom-left"
+		});
+
 		$("#isCreateTransaction").click(function(){
 			if(this.checked){
 				$("#create-transaction2").show(200);
@@ -34,6 +43,11 @@
 			$("#activity").val($xz.prop("name"));
 			$("#hid-activityId").val($xz.val());
 		});
+
+		//是否创建交易的按钮
+		$("#isCreateTransaction").click(function () {
+			$("#hid-isCreateTransaction").val(this.checked);
+		})
 	});
 
 
@@ -44,7 +58,6 @@
 		$("radio[name=xz]").prop("checked", false);
 		$.ajax({
 			url:"clue/listActivity.do",
-			data:{clueId:"${clue.id}"},
 			type:"get",
 			success:function (resp) {
 				var html = "";
@@ -109,62 +122,64 @@
 			</div>
 		</div>
 	</div>
+	<form action="clue/tran.do" method="post">
+		<div id="title" class="page-header" style="position: relative; left: 20px;">
+			<h4>转换线索 <small>${clue.fullname}${clue.appellation}-${clue.company}</small></h4>
+		</div>
+		<div id="create-customer" style="position: relative; left: 40px; height: 35px;">
+			新建客户：${clue.company}
+		</div>
+		<div id="create-contact" style="position: relative; left: 40px; height: 35px;">
+			新建联系人：${clue.fullname}${clue.appellation}
+		</div>
+		<div id="create-transaction1" style="position: relative; left: 40px; height: 35px; top: 25px;">
+			<input type="checkbox" id="isCreateTransaction"/>
+			为客户创建交易
+		</div>
+		<div id="create-transaction2" style="position: relative; left: 40px; top: 20px; width: 80%; background-color: #F7F7F7; display: none;" >
 
-	<div id="title" class="page-header" style="position: relative; left: 20px;">
-		<h4>转换线索 <small>${clue.fullname}${clue.appellation}-${clue.company}</small></h4>
-	</div>
-	<div id="create-customer" style="position: relative; left: 40px; height: 35px;">
-		新建客户：${clue.company}
-	</div>
-	<div id="create-contact" style="position: relative; left: 40px; height: 35px;">
-		新建联系人：${clue.fullname}${clue.appellation}
-	</div>
-	<div id="create-transaction1" style="position: relative; left: 40px; height: 35px; top: 25px;">
-		<input type="checkbox" id="isCreateTransaction"/>
-		为客户创建交易
-	</div>
-	<div id="create-transaction2" style="position: relative; left: 40px; top: 20px; width: 80%; background-color: #F7F7F7; display: none;" >
-	
-		<form>
-			<input type="hidden" id="hid-activityId">
-			<input type="hidden" id="hid-clueId" value="${clue.id}">
-		  <div class="form-group" style="width: 400px; position: relative; left: 20px;">
-		    <label for="amountOfMoney">金额</label>
-		    <input type="text" class="form-control" id="amountOfMoney">
-		  </div>
-		  <div class="form-group" style="width: 400px;position: relative; left: 20px;">
-		    <label for="tradeName">交易名称</label>
-		    <input type="text" class="form-control" id="tradeName" value="动力节点-">
-		  </div>
-		  <div class="form-group" style="width: 400px;position: relative; left: 20px;">
-		    <label for="expectedClosingDate">预计成交日期</label>
-		    <input type="text" class="form-control" id="expectedClosingDate">
-		  </div>
-		  <div class="form-group" style="width: 400px;position: relative; left: 20px;">
-		    <label for="stage">阶段</label>
-		    <select id="stage"  class="form-control">
-		    	<option></option>
-		    	<c:forEach items="${stageList}" var="stage">
-					<option value="${stage.value}">${stage.text}</option>
-				</c:forEach>
-		    </select>
-		  </div>
-		  <div class="form-group" style="width: 400px;position: relative; left: 20px;">
-		    <label for="activity">市场活动源&nbsp;&nbsp;<a href="javascript:void(0);" onclick="openActivity()" style="text-decoration: none;"><span class="glyphicon glyphicon-search"></span></a></label>
-		    <input type="text" class="form-control" id="activity" placeholder="点击上面搜索" readonly>
-		  </div>
-		</form>
-		
-	</div>
-	
-	<div id="owner" style="position: relative; left: 40px; height: 35px; top: 50px;">
-		记录的所有者：<br>
-		<b>${clue.owner}</b>
-	</div>
-	<div id="operation" style="position: relative; left: 40px; height: 35px; top: 100px;">
-		<input class="btn btn-primary" type="button" value="转换">
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<input class="btn btn-default" type="button" value="取消">
-	</div>
+
+				<input type="hidden" name="activityId" id="hid-activityId">
+				<input type="hidden" name="clueId" id="hid-clueId" value="${clue.id}">
+				<input type="hidden" name="flag" id="hid-isCreateTransaction" value="false">
+			  <div class="form-group" style="width: 400px; position: relative; left: 20px;">
+				<label for="amountOfMoney">金额</label>
+				<input type="text" class="form-control" id="amountOfMoney" name="money">
+			  </div>
+			  <div class="form-group" style="width: 400px;position: relative; left: 20px;">
+				<label for="tradeName">交易名称</label>
+				<input type="text" class="form-control" id="tradeName" name="name">
+			  </div>
+			  <div class="form-group" style="width: 400px;position: relative; left: 20px;">
+				<label for="expectedClosingDate">预计成交日期</label>
+				<input type="text" class="form-control time" id="expectedClosingDate" name="expectedDate" readonly>
+			  </div>
+			  <div class="form-group" style="width: 400px;position: relative; left: 20px;">
+				<label for="stage">阶段</label>
+				<select id="stage"  class="form-control" name="stage">
+					<option></option>
+					<c:forEach items="${stageList}" var="stage">
+						<option value="${stage.value}">${stage.text}</option>
+					</c:forEach>
+				</select>
+			  </div>
+			  <div class="form-group" style="width: 400px;position: relative; left: 20px;">
+				<label for="activity">市场活动源&nbsp;&nbsp;<a href="javascript:void(0);" onclick="openActivity()" style="text-decoration: none;"><span class="glyphicon glyphicon-search"></span></a></label>
+				<input type="text" class="form-control" id="activity" placeholder="点击上面搜索" readonly>
+			  </div>
+
+
+		</div>
+
+		<div id="owner" style="position: relative; left: 40px; height: 35px; top: 50px;">
+			记录的所有者：<br>
+			<b>${clue.owner}</b>
+		</div>
+		<div id="operation" style="position: relative; left: 40px; height: 35px; top: 100px;">
+			<input class="btn btn-primary" type="submit" value="转换">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="btn btn-default" type="button" value="取消">
+		</div>
+	</form>
 </body>
 </html>

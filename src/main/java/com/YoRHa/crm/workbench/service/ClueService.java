@@ -3,6 +3,7 @@ package com.YoRHa.crm.workbench.service;
 import com.YoRHa.crm.workbench.domain.Activity;
 import com.YoRHa.crm.workbench.domain.Clue;
 import com.YoRHa.crm.workbench.domain.ClueActivityRelation;
+import com.YoRHa.crm.workbench.domain.Tran;
 
 import java.util.List;
 import java.util.Map;
@@ -29,4 +30,6 @@ public interface ClueService {
     List<Activity> listBundActivity(String clueId);
 
     Boolean unbundActivity(String id);
+
+    Boolean transaction(Tran tran, String clueId, String createBy);
 }

@@ -5,7 +5,24 @@
 
 <mapper namespace="com.YoRHa.crm.workbench.dao.CustomerRemarkDao">
 	
-  	
+  	<insert id="insertCustomerRemark" parameterType="CustomerRemark">
+        insert into tbl_customer_remark(
+            id,
+            noteContent,
+            createBy,
+            createTime,
+            editFlag,
+            customerId
+        )values(
+            #{id},
+            #{noteContent},
+            #{createBy},
+            #{createTime},
+            #{editFlag},
+            #{customerId}
+        )
+    </insert>
+
 </mapper>
 
 

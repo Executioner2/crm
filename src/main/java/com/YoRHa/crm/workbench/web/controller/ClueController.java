@@ -6,7 +6,7 @@ import com.YoRHa.crm.utils.DateTimeUtil;
 import com.YoRHa.crm.utils.UUIDUtil;
 import com.YoRHa.crm.workbench.domain.Activity;
 import com.YoRHa.crm.workbench.domain.Clue;
-import com.YoRHa.crm.workbench.domain.ClueActivityRelation;
+import com.YoRHa.crm.workbench.domain.Tran;
 import com.YoRHa.crm.workbench.service.ClueService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -110,5 +109,15 @@ public class ClueController {
         mv.addObject("clue", clue);
         mv.setViewName("workbench/clue/convert");
         return mv;
+    }
+
+    @RequestMapping(value = "/tran.do", method = RequestMethod.POST)
+    public String transaction(Boolean flag, String clueId, Tran tran, HttpServletRequest request){
+        String createBy = ((User)request.getSession(false).getAttribute("user")).getName();
+        tran = flag ? tran : null;
+
+        clueService.transaction(tran, clueId, createBy);
+
+        return "redirect:/workbench/clue/index.do";
     }
 }
