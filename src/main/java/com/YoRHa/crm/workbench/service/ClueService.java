@@ -2,7 +2,6 @@ package com.YoRHa.crm.workbench.service;
 
 import com.YoRHa.crm.workbench.domain.Activity;
 import com.YoRHa.crm.workbench.domain.Clue;
-import com.YoRHa.crm.workbench.domain.ClueActivityRelation;
 import com.YoRHa.crm.workbench.domain.Tran;
 
 import java.util.List;

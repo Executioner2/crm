@@ -26,4 +26,6 @@ public interface ActivityService {
     Boolean updateActivity(Activity activity);
 
     Activity queryActivityOnRemarkPage(Activity activity);
+
+    List<Activity> listActivity();
 }

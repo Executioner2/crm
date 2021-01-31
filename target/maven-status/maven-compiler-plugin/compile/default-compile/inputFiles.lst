@@ -17,12 +17,15 @@ E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\ActivityRem
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\dao\ContactsRemarkDao.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\ClueRemark.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\ActivityService.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\web\controller\TranController.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\CustomerRemark.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\utils\UUIDUtil.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\CustomerService.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\ClueService.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\web\controller\UserController.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\Activity.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\ActivityRemark.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\impl\ContactsServiceImpl.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\web\controller\ClueController.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\web\handler\exception\SqlDataExceptionHandler.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\service\DicValueService.java
@@ -36,9 +39,11 @@ E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\dao\ContactsActivit
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\impl\ActivityRemarkServiceImpl.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\dao\UserDao.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\dao\ActivityRemarkDao.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\ContactsService.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\service\impl\UserServiceImpl.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\web\controller\ActivityController.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\domain\DicType.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\impl\CustomerServiceImpl.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\ContactsRemark.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\Tran.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\Contacts.java

@@ -120,4 +120,10 @@ public class ActivityServiceImpl implements ActivityService {
 
         return activityDao.queryActivity(activity);
     }
+
+    @Override
+    public List<Activity> listActivity() {
+
+        return activityDao.listActivity(null, null);
+    }
 }

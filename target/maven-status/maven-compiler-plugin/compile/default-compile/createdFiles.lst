@@ -5,7 +5,9 @@ com\YoRHa\crm\workbench\web\controller\ActivityController.class
 com\YoRHa\crm\workbench\service\ActivityService.class
 com\YoRHa\crm\workbench\service\impl\ActivityRemarkServiceImpl.class
 com\YoRHa\crm\web\listener\DicInitListener.class
+com\YoRHa\crm\workbench\web\controller\TranController.class
 com\YoRHa\crm\workbench\dao\ContactsRemarkDao.class
+com\YoRHa\crm\workbench\service\impl\CustomerServiceImpl.class
 com\YoRHa\crm\web\handler\interceptor\LoginInterceptor.class
 com\YoRHa\crm\workbench\dao\ActivityRemarkDao.class
 com\YoRHa\crm\settings\web\controller\UserController.class
@@ -20,6 +22,7 @@ com\YoRHa\crm\workbench\dao\ClueDao.class
 com\YoRHa\crm\settings\domain\DicType.class
 com\YoRHa\crm\settings\service\impl\DicValueServiceImpl.class
 com\YoRHa\crm\workbench\dao\TranHistoryDao.class
+com\YoRHa\crm\workbench\service\ContactsService.class
 com\YoRHa\crm\settings\service\DicValueService.class
 com\YoRHa\crm\settings\dao\UserDao.class
 com\YoRHa\crm\exception\LoginException.class
@@ -30,6 +33,7 @@ com\YoRHa\crm\workbench\domain\ActivityRemark.class
 com\YoRHa\crm\workbench\web\controller\ClueController.class
 com\YoRHa\crm\workbench\dao\ActivityDao.class
 com\YoRHa\crm\workbench\dao\ContactsActivityRelationDao.class
+com\YoRHa\crm\workbench\service\impl\ContactsServiceImpl.class
 com\YoRHa\crm\workbench\service\impl\ActivityServiceImpl.class
 com\YoRHa\crm\workbench\domain\Contacts.class
 com\YoRHa\crm\workbench\web\handler\exception\SqlDataExceptionHandler.class
@@ -46,6 +50,7 @@ com\YoRHa\crm\utils\MD5Util.class
 com\YoRHa\crm\workbench\domain\TranHistory.class
 com\YoRHa\crm\settings\web\handler\exception\LoginExceptionHandler.class
 com\YoRHa\crm\workbench\dao\ClueRemarkDao.class
+com\YoRHa\crm\workbench\service\CustomerService.class
 com\YoRHa\crm\workbench\web\controller\ActivityRemarkController.class
 com\YoRHa\crm\workbench\domain\ClueActivityRelation.class
 com\YoRHa\crm\workbench\dao\ClueActivityRelationDao.class
