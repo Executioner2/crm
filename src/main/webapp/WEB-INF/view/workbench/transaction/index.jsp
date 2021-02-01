@@ -20,10 +20,57 @@
 <script type="text/javascript">
 
 	$(function(){
-		
-		
+		listPage(1, 2);
 		
 	});
+
+	function listPage(pageNo, pageSize) {
+		$.ajax({
+			url:"tran/listTran.do",
+			type:"get",
+			data:{
+				"pageNo":pageNo,
+				"pageSize":pageSize
+			},
+			success:function (resp) {
+				var html = "";
+				$.each(resp.trans, function (index, item) {
+					html += '<tr>';
+					html += '<td><input type="checkbox" /></td>';
+					html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'tran/detailPage.do?id='+item.id+'\';">'+item.customerId+'-'+item.name+'</a></td>';
+					html += '<td>'+item.customerId+'</td>';
+					html += '<td>'+item.stage+'</td>';
+					html += '<td>'+item.type+'</td>';
+					html += '<td>'+item.owner+'</td>';
+					html += '<td>'+item.source+'</td>';
+					html += '<td>'+item.contactsId+'</td>';
+					html += '</tr>';
+				});
+
+				$("#listTranTable tbody").html(html);
+
+				$("#tranPage").bs_pagination({
+					currentPage: pageNo, // 页码
+					rowsPerPage: pageSize, // 每页显示的记录条数
+					maxRowsPerPage: 20, // 每页最多显示的记录条数
+					totalPages: resp.pages, // 总页数
+					totalRows: resp.total, // 总记录条数
+
+					visiblePageLinks: 3, // 显示几个卡片
+
+					showGoToPage: true,
+					showRowsPerPage: true,
+					showRowsInfo: true,
+					showRowsDefaultInfo: true,
+
+					onChangePage : function(event, data){
+						listPage(data.currentPage , data.rowsPerPage);
+					}
+				});
+			}
+		});
+
+	}
 	
 </script>
 </head>
@@ -142,7 +189,7 @@
 				
 			</div>
 			<div style="position: relative;top: 10px;">
-				<table class="table table-hover">
+				<table id="listTranTable" class="table table-hover">
 					<thead>
 						<tr style="color: #B3B3B3;">
 							<td><input type="checkbox" /></td>
@@ -156,63 +203,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><input type="checkbox" /></td>
-							<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='detail.html';">动力节点-交易01</a></td>
-							<td>动力节点</td>
-							<td>谈判/复审</td>
-							<td>新业务</td>
-							<td>zhangsan</td>
-							<td>广告</td>
-							<td>李四</td>
-						</tr>
-                        <tr class="active">
-                            <td><input type="checkbox" /></td>
-                            <td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href='detail.html';">动力节点-交易01</a></td>
-                            <td>动力节点</td>
-                            <td>谈判/复审</td>
-                            <td>新业务</td>
-                            <td>zhangsan</td>
-                            <td>广告</td>
-                            <td>李四</td>
-                        </tr>
 					</tbody>
 				</table>
 			</div>
-			
-			<div style="height: 50px; position: relative;top: 20px;">
-				<div>
-					<button type="button" class="btn btn-default" style="cursor: default;">共<b>50</b>条记录</button>
-				</div>
-				<div class="btn-group" style="position: relative;top: -34px; left: 110px;">
-					<button type="button" class="btn btn-default" style="cursor: default;">显示</button>
-					<div class="btn-group">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							10
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">20</a></li>
-							<li><a href="#">30</a></li>
-						</ul>
-					</div>
-					<button type="button" class="btn btn-default" style="cursor: default;">条/页</button>
-				</div>
-				<div style="position: relative;top: -88px; left: 285px;">
-					<nav>
-						<ul class="pagination">
-							<li class="disabled"><a href="#">首页</a></li>
-							<li class="disabled"><a href="#">上一页</a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">下一页</a></li>
-							<li class="disabled"><a href="#">末页</a></li>
-						</ul>
-					</nav>
-				</div>
+
+			<%--分页框--%>
+			<div style="height: 50px; position: relative;top: 30px;">
+
+				<div id="tranPage"></div>
+
 			</div>
 			
 		</div>

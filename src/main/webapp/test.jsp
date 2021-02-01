@@ -41,6 +41,10 @@
         todayBtn: true,
         pickerPosition: "bottom-left"
     });
+
+   /* System.out.println("==========开始==========");
+    System.out.println();
+    System.out.println("==========结束==========");*/
 </script>
 </body>
 </html>

@@ -11,6 +11,7 @@ com\YoRHa\crm\workbench\service\impl\CustomerServiceImpl.class
 com\YoRHa\crm\web\handler\interceptor\LoginInterceptor.class
 com\YoRHa\crm\workbench\dao\ActivityRemarkDao.class
 com\YoRHa\crm\settings\web\controller\UserController.class
+com\YoRHa\crm\workbench\service\impl\TranHistoryServiceImpl.class
 com\YoRHa\crm\sidebar\web\controller\SideBarController.class
 com\YoRHa\crm\settings\dao\DicValueDao.class
 com\YoRHa\crm\utils\DateTimeUtil.class
@@ -21,6 +22,7 @@ com\YoRHa\crm\settings\service\UserService.class
 com\YoRHa\crm\workbench\dao\ClueDao.class
 com\YoRHa\crm\settings\domain\DicType.class
 com\YoRHa\crm\settings\service\impl\DicValueServiceImpl.class
+com\YoRHa\crm\workbench\service\impl\TranServiceImpl.class
 com\YoRHa\crm\workbench\dao\TranHistoryDao.class
 com\YoRHa\crm\workbench\service\ContactsService.class
 com\YoRHa\crm\settings\service\DicValueService.class
@@ -29,7 +31,9 @@ com\YoRHa\crm\exception\LoginException.class
 com\YoRHa\crm\workbench\dao\CustomerDao.class
 com\YoRHa\crm\workbench\domain\ContactsActivityRelation.class
 com\YoRHa\crm\exception\SqlDataDeleteException.class
+com\YoRHa\crm\workbench\service\TranService.class
 com\YoRHa\crm\workbench\domain\ActivityRemark.class
+com\YoRHa\crm\workbench\service\TranHistoryService.class
 com\YoRHa\crm\workbench\web\controller\ClueController.class
 com\YoRHa\crm\workbench\dao\ActivityDao.class
 com\YoRHa\crm\workbench\dao\ContactsActivityRelationDao.class

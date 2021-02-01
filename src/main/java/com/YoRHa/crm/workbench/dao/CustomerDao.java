@@ -11,4 +11,6 @@ public interface CustomerDao {
     Integer insertCustomer(Customer customer);
 
     List<String> searchCustomerName(String name);
+
+    Customer getCustomerByFullName(String customerName);
 }

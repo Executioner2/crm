@@ -25,6 +25,18 @@
         )
     </insert>
 
+    <select id="listTranHistoryByTranId" resultType="TranHistory">
+        select
+            id,
+            stage,
+            money,
+            expectedDate,
+            createTime,
+            createBy,
+            tranId
+        from tbl_tran_history where tranId=#{tid} order by createTime desc
+    </select>
+
 </mapper>
 
 

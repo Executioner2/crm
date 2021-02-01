@@ -55,6 +55,24 @@
         select name from tbl_customer where name like #{name} '%'
     </select>
 
+    <select id="getCustomerByFullName" resultType="Customer">
+        select
+            id,
+            owner,
+            name,
+            website,
+            phone,
+            createBy,
+            createTime,
+            editBy,
+            editTime,
+            contactSummary,
+            nextContactTime,
+            description,
+            address
+        from tbl_customer where name=#{name}
+    </select>
+
 </mapper>
 
 

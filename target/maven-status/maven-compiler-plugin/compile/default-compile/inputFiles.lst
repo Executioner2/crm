@@ -5,6 +5,7 @@ E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\dao\TranDao.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\web\handler\exception\LoginExceptionHandler.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\web\handler\aspect\PageAspectHandler.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\domain\User.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\impl\TranHistoryServiceImpl.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\dao\CustomerDao.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\dao\ClueActivityRelationDao.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\service\impl\DicValueServiceImpl.java
@@ -22,11 +23,13 @@ E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\CustomerRema
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\utils\UUIDUtil.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\CustomerService.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\ClueService.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\impl\TranServiceImpl.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\web\controller\UserController.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\Activity.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\ActivityRemark.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\impl\ContactsServiceImpl.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\web\controller\ClueController.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\TranService.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\web\handler\exception\SqlDataExceptionHandler.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\service\DicValueService.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\dao\DicValueDao.java
@@ -47,6 +50,7 @@ E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\impl\Custom
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\ContactsRemark.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\Tran.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\Contacts.java
+E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\TranHistoryService.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\settings\domain\DicValue.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\domain\TranHistory.java
 E:\JavaProject\CRM\crm\src\main\java\com\YoRHa\crm\workbench\service\impl\ClueServiceImpl.java

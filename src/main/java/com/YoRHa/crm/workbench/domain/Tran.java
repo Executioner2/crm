@@ -21,6 +21,9 @@ public class Tran {
 	private String contactSummary;	//联系纪要
 	private String nextContactTime;	//下次联系时间
 
+	// 扩展（可能性），在交易的详细页用到
+	private String possibility;
+
 	@Override
 	public String toString() {
 		return "Tran{" +
@@ -43,6 +46,14 @@ public class Tran {
 				", contactSummary='" + contactSummary + '\'' +
 				", nextContactTime='" + nextContactTime + '\'' +
 				'}';
+	}
+
+	public String getPossibility() {
+		return possibility;
+	}
+
+	public void setPossibility(String possibility) {
+		this.possibility = possibility;
 	}
 
 	public String getId() {
