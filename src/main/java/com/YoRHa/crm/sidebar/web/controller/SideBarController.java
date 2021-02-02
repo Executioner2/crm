@@ -44,4 +44,9 @@ public class SideBarController {
     public String transactionIndex(){
         return "workbench/transaction/index";
     }
+
+    @RequestMapping(value = "/chart/transaction/index.do")
+    public String chartTransactionIndex(){
+        return "workbench/chart/transaction/index";
+    }
 }

@@ -21,4 +21,6 @@ public interface TranService {
     Tran queryTran(Tran tran);
 
     Map<String, Object> changeStage(Tran tran, String formerStage);
+
+    Map<String, Object> getTranChart();
 }

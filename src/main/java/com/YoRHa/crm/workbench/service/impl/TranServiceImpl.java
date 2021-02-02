@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Copyright@1205878539@qq.com
@@ -126,6 +124,21 @@ public class TranServiceImpl implements TranService {
 
         map.put("result", flag);
         map.put("tran", tran);
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> getTranChart() {
+        Map<String, Object> map = new HashMap<>();
+
+        // 1、获得total
+        Integer total = tranDao.countTotal();
+
+        // 2、获得stage和分组的count(*)
+        List<Map<String, String>> mapList = tranDao.countGroupByStage();
+
+        map.put("total", total);
+        map.put("list", mapList);
         return map;
     }
 }
